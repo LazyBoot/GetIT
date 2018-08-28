@@ -30,7 +30,8 @@ namespace OppgaveHvaGjorKoden
                     if (counts[i] > 0)
                     {
                         var character = (char)i;
-                        Console.WriteLine(character + " - " + counts[i].ToString().PadLeft(4) + " - " + Math.Round((float)counts[i] / total * 100).ToString().PadLeft(3) + "%");
+                        double percent = Math.Round((double)counts[i] / total * 100);
+                        Console.WriteLine(character + " - " + counts[i].ToString().PadLeft(4) + " - " + percent.ToString().PadLeft(3) + "%");
                     }
                 }
 
