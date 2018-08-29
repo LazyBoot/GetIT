@@ -10,32 +10,46 @@ namespace OppgaveHvaGjorKoden
     {
         static void Main(string[] args)
         {
-            var range = 250;
+            ReadTextAndShowCharCounts(250);
+        }
+
+        private static void ReadTextAndShowCharCounts(int range)
+        {
             var counts = new int[range];
             string text = "something";
             while (!string.IsNullOrWhiteSpace(text))
             {
                 Array.Clear(counts, 0, counts.Length);
-                var total = 0;
                 text = Console.ReadLine();
 
-                foreach (var character in text?.ToLowerInvariant() ?? string.Empty)
-                {
-                    counts[(int)character]++;
-                    total++;
-                }
+                var total = CountChars(text, counts);
 
-                for (var i = 0; i < range; i++)
-                {
-                    if (counts[i] > 0)
-                    {
-                        var character = (char)i;
-                        double percent = Math.Round((double)counts[i] / total * 100);
-                        Console.WriteLine(character + " - " + counts[i].ToString().PadLeft(4) + " - " + percent.ToString().PadLeft(3) + "%");
-                    }
-                }
-
+                ShowCounts(range, counts, total);
             }
+        }
+
+        private static void ShowCounts(int range, int[] counts, int total)
+        {
+            for (var i = 0; i < range; i++)
+            {
+                if (counts[i] <= 0) continue;
+                var character = (char) i;
+                var percent = (int) Math.Round((double) counts[i] / total * 100);
+                Console.WriteLine(character + " - " + counts[i].ToString().PadLeft(4) + " - " +
+                                  percent.ToString().PadLeft(3) + "%");
+            }
+        }
+
+        private static int CountChars(string text, int[] counts)
+        {
+            var total = 0;
+            foreach (var character in text?.ToLowerInvariant() ?? string.Empty)
+            {
+                counts[(int) character]++;
+                total++;
+            }
+
+            return total;
         }
     }
 }
