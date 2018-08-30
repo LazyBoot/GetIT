@@ -23,50 +23,50 @@ namespace PasswordGen
         private static void GeneratePasswordFromPattern(string[] args)
         {
             string pattern = args[1].PadRight(Convert.ToInt16(args[0]), 'l');
-
+            string password = string.Empty;
             while (pattern.Length > 0)
             {
                 var patternPos = Random.Next(0, pattern.Length - 1);
                 switch (pattern[patternPos])
                 {
                     case 'l':
-                        WriteRandomLowerCaseLetter();
+                        password += WriteRandomLowerCaseLetter();
                         break;
                     case 'L':
-                        WriteRandomUpperCaseLetter();
+                        password += WriteRandomUpperCaseLetter();
                         break;
                     case 'd':
-                        WriteRandomDigit();
+                        password += WriteRandomDigit();
                         break;
                     case 's':
-                        WriteRandomSpecialCharacter();
+                        password += WriteRandomSpecialCharacter();
                         break;
                 }
 
                 pattern = pattern.Remove(patternPos, 1);
             }
-            Console.Write("\n");
+            Console.WriteLine(password);
         }
 
-        private static void WriteRandomLowerCaseLetter()
+        private static char WriteRandomLowerCaseLetter()
         {
-            Console.Write(GetRandomLetter('a','z'));
+            return GetRandomLetter('a','z');
         }
 
-        private static void WriteRandomUpperCaseLetter()
+        private static char WriteRandomUpperCaseLetter()
         {
-            Console.Write(GetRandomLetter('A','Z'));
+            return GetRandomLetter('A','Z');
         }
 
-        private static void WriteRandomDigit()
+        private static int WriteRandomDigit()
         {
-            Console.Write(Random.Next(0, 9));
+            return Random.Next(0, 9);
         }
 
-        private static void WriteRandomSpecialCharacter()
+        private static char WriteRandomSpecialCharacter()
         {
             var specialCharacters = @"!""#¤%&/(){}[]";
-            Console.Write(specialCharacters[Random.Next(0,specialCharacters.Length-1)]);
+            return specialCharacters[Random.Next(0,specialCharacters.Length-1)];
         }
 
         private static char GetRandomLetter(char min, char max)
