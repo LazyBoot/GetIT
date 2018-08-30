@@ -33,10 +33,9 @@ namespace OppgaveHvaGjorKoden
             for (var i = 0; i < range; i++)
             {
                 if (counts[i] <= 0) continue;
-                var character = (char) i;
-                var percent = (int) Math.Round((double) counts[i] / total * 100);
-                Console.WriteLine(character + " - " + counts[i].ToString().PadLeft(4) + " - " +
-                                  percent.ToString().PadLeft(3) + "%");
+                var character = (char)i;
+                var percent = (int)Math.Round((double)counts[i] / total * 100);
+                Console.WriteLine("{0} - {1,4} - {2,6:0.00}%", character, counts[i], percent);
             }
         }
 
@@ -45,7 +44,7 @@ namespace OppgaveHvaGjorKoden
             var total = 0;
             foreach (var character in text?.ToLowerInvariant() ?? string.Empty)
             {
-                counts[(int) character]++;
+                counts[(int)character]++;
                 total++;
             }
 
