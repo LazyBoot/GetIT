@@ -34,7 +34,7 @@ namespace OppgaveHvaGjorKoden
             {
                 if (counts[i] <= 0) continue;
                 var character = (char)i;
-                var percent = (int)Math.Round((double)counts[i] / total * 100);
+                var percent = (int)Math.Round((double)counts[i] / total);
                 Console.WriteLine("{0} - {1,4} - {2,6:0.00}%", character, counts[i], percent);
             }
         }
