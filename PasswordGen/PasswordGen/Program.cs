@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Reflection;
 
 namespace PasswordGen
 {
@@ -17,10 +15,12 @@ namespace PasswordGen
                 return;
             }
 
-            GeneratePasswordFromPattern(args);
+            var password = GeneratePasswordFromPattern(args);
+            Console.WriteLine(password);
+            System.IO.File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + "\n");
         }
 
-        private static void GeneratePasswordFromPattern(string[] args)
+        private static string GeneratePasswordFromPattern(string[] args)
         {
             string pattern = args[1].PadRight(Convert.ToInt16(args[0]), 'l');
             string password = string.Empty;
@@ -45,7 +45,8 @@ namespace PasswordGen
 
                 pattern = pattern.Remove(patternPos, 1);
             }
-            Console.WriteLine(password);
+
+            return password;
         }
 
         private static char WriteRandomLowerCaseLetter()
@@ -98,10 +99,17 @@ namespace PasswordGen
 
         private static bool CheckNumber(string s)
         {
+
             foreach (var c in s)
             {
                 if (!char.IsDigit(c))
                     return false;
+            }
+
+            if (Convert.ToInt64(s) > short.MaxValue)
+            {
+                Console.WriteLine("Max allowed length is " + short.MaxValue);
+                return false;
             }
             return true;
         }
