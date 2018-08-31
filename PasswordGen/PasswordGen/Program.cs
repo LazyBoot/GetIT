@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace PasswordGen
@@ -9,20 +10,50 @@ namespace PasswordGen
         static  readonly Random Random = new Random();
         static void Main(string[] args)
         {
+#if DEBUG
+            var noargs = false;
+            if (args.Length == 0)
+            {
+                Console.Write("Enter commandline arguments: ");
+                args = Console.ReadLine()?.Split(' ');
+                noargs = true;
+            }
+            File.WriteAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", "");
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+#endif
+
+
             if (!IsValid(args))
             {
                 ShowOptions();
+
+#if DEBUG
+                watch.Stop();
+                Console.WriteLine(watch.ElapsedMilliseconds);
+#endif
                 return;
             }
 
             var password = GeneratePasswordFromPattern(args);
             Console.WriteLine(password);
-            System.IO.File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + "\n");
+
+            File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + Environment.NewLine);
+
+#if DEBUG
+            watch.Stop();
+            Console.WriteLine("Runtime: {0} ms", watch.ElapsedMilliseconds);
+
+            if (noargs)
+            {
+                Console.Write("Press any key to exit...");
+                Console.ReadKey();
+            }
+#endif
         }
 
         private static string GeneratePasswordFromPattern(string[] args)
         {
-            string pattern = args[1].PadRight(Convert.ToInt16(args[0]), 'l');
+            string pattern = args[1].PadRight(Convert.ToInt32(args[0]), 'l');
             string password = string.Empty;
             while (pattern.Length > 0)
             {
@@ -42,7 +73,7 @@ namespace PasswordGen
                         password += WriteRandomSpecialCharacter();
                         break;
                 }
-
+                
                 pattern = pattern.Remove(patternPos, 1);
             }
 
@@ -82,16 +113,10 @@ namespace PasswordGen
 
         private static bool CheckOptions(string s)
         {
+            const string validCharacters = "lLds";
             foreach (var c in s)
             {
-                switch (c)
-                {
-                    case 'l': break;
-                    case 'L': break;
-                    case 'd': break;
-                    case 's': break;
-                    default: return false;
-                }
+                if (!validCharacters.Contains(c)) return false;
             }
 
             return true;
@@ -106,7 +131,7 @@ namespace PasswordGen
                     return false;
             }
 
-            if (Convert.ToInt64(s) > short.MaxValue)
+            if (Convert.ToInt64(s) > int.MaxValue)
             {
                 Console.WriteLine("Max allowed length is " + short.MaxValue);
                 return false;
