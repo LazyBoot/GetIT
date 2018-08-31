@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace PasswordGen
 {
@@ -35,7 +36,7 @@ namespace PasswordGen
             }
 
             var password = GeneratePasswordFromPattern(args);
-            Console.WriteLine(password);
+            //Console.WriteLine(password);
 
             File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + Environment.NewLine);
 
@@ -54,30 +55,35 @@ namespace PasswordGen
         private static string GeneratePasswordFromPattern(string[] args)
         {
             string pattern = args[1].PadRight(Convert.ToInt32(args[0]), 'l');
-            string password = string.Empty;
-            while (pattern.Length > 0)
+
+            char[] rndPattern = pattern.OrderBy(x => Random.Next()).ToArray();
+            //var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
+            var password = new StringBuilder(String.Empty);
+            //while (pattern.Length > 0)
+            System.Threading.Tasks.Parallel.ForEach(rndPattern, c =>
             {
-                var patternPos = Random.Next(0, pattern.Length - 1);
-                switch (pattern[patternPos])
+                //var patternPos = Random.Next(0, pattern.Length - 1);
+                //switch (pattern[patternPos])
+                switch (c)
                 {
                     case 'l':
-                        password += WriteRandomLowerCaseLetter();
+                        password.Append(WriteRandomLowerCaseLetter());
                         break;
                     case 'L':
-                        password += WriteRandomUpperCaseLetter();
+                        password.Append(WriteRandomUpperCaseLetter());
                         break;
                     case 'd':
-                        password += WriteRandomDigit();
+                        password.Append(WriteRandomDigit());
                         break;
                     case 's':
-                        password += WriteRandomSpecialCharacter();
+                        password.Append(WriteRandomSpecialCharacter());
                         break;
                 }
-                
-                pattern = pattern.Remove(patternPos, 1);
-            }
 
-            return password;
+                //pattern = pattern.Remove(patternPos, 1);
+            });
+            
+            return password.ToString();
         }
 
         private static char WriteRandomLowerCaseLetter()
