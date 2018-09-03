@@ -59,10 +59,11 @@ namespace PasswordGen
             Console.Write("Generating password...");
             using (var progress = new ProgressBar())
             {
-                var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
+                var length = Convert.ToInt32(args[0]);
+                var pattern = new StringBuilder(args[1].PadRight(length, 'l'));
                 while (pattern.Length > 0)
                 {
-                    progress.Report(1 - (double)pattern.Length / Convert.ToInt32(args[0]));
+                    progress.Report(1 - (double)pattern.Length / length);
                     var patternPos = Random.Next(0, pattern.Length - 1);
                     switch (pattern[patternPos])
                     {
