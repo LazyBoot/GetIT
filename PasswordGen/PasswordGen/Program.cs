@@ -8,7 +8,7 @@ namespace PasswordGen
 {
     class Program
     {
-        static  readonly Random Random = new Random();
+        static readonly Random Random = new Random();
         static void Main(string[] args)
         {
 #if DEBUG
@@ -50,45 +50,51 @@ namespace PasswordGen
                 Console.ReadKey();
             }
 #endif
-        }
+         }
 
         private static string GeneratePasswordFromPattern(string[] args)
         {
-            var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
+
             var password = new StringBuilder(string.Empty);
-            while (pattern.Length > 0)
+            Console.Write("Generating password...");
+            using (var progress = new ProgressBar())
             {
-                var patternPos = Random.Next(0, pattern.Length - 1);
-                switch (pattern[patternPos])
+                var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
+                while (pattern.Length > 0)
                 {
-                    case 'l':
-                        password.Append(WriteRandomLowerCaseLetter());
-                        break;
-                    case 'L':
-                        password.Append(WriteRandomUpperCaseLetter());
-                        break;
-                    case 'd':
-                        password.Append(WriteRandomDigit());
-                        break;
-                    case 's':
-                        password.Append(WriteRandomSpecialCharacter());
-                        break;
+                    progress.Report(1 - (double)pattern.Length / Convert.ToInt32(args[0]));
+                    var patternPos = Random.Next(0, pattern.Length - 1);
+                    switch (pattern[patternPos])
+                    {
+                        case 'l':
+                            password.Append(WriteRandomLowerCaseLetter());
+                            break;
+                        case 'L':
+                            password.Append(WriteRandomUpperCaseLetter());
+                            break;
+                        case 'd':
+                            password.Append(WriteRandomDigit());
+                            break;
+                        case 's':
+                            password.Append(WriteRandomSpecialCharacter());
+                            break;
+                    }
+
+                    pattern = pattern.Remove(patternPos, 1);
                 }
 
-                pattern = pattern.Remove(patternPos, 1);
             }
-
             return password.ToString();
         }
 
         private static char WriteRandomLowerCaseLetter()
         {
-            return GetRandomLetter('a','z');
+            return GetRandomLetter('a', 'z');
         }
 
         private static char WriteRandomUpperCaseLetter()
         {
-            return GetRandomLetter('A','Z');
+            return GetRandomLetter('A', 'Z');
         }
 
         private static int WriteRandomDigit()
@@ -99,12 +105,12 @@ namespace PasswordGen
         private static char WriteRandomSpecialCharacter()
         {
             var specialCharacters = @"!""#¤%&/(){}[]";
-            return specialCharacters[Random.Next(0,specialCharacters.Length-1)];
+            return specialCharacters[Random.Next(0, specialCharacters.Length - 1)];
         }
 
         private static char GetRandomLetter(char min, char max)
         {
-            return (char) Random.Next(min, max);
+            return (char)Random.Next(min, max);
         }
 
         private static bool IsValid(string[] args)
