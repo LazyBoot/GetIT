@@ -61,7 +61,7 @@ namespace PasswordGen
             {
                 var length = Convert.ToInt32(args[0]);
                 var pattern = new StringBuilder(args[1].PadRight(length, 'l'));
-                while (pattern.Length > 0)
+                while (pattern.Length > 0) // TODO: Multithread!
                 {
                     progress.Report(1 - (double)pattern.Length / length);
                     var patternPos = Random.Next(0, pattern.Length - 1);
@@ -105,7 +105,7 @@ namespace PasswordGen
 
         private static char WriteRandomSpecialCharacter()
         {
-            var specialCharacters = @"!""#¤%&/(){}[]";
+            const string specialCharacters = @"!""#¤%&/(){}[]";
             return specialCharacters[Random.Next(0, specialCharacters.Length - 1)];
         }
 
