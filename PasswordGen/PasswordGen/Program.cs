@@ -36,7 +36,7 @@ namespace PasswordGen
             }
 
             var password = GeneratePasswordFromPattern(args);
-            //Console.WriteLine(password);
+            Console.WriteLine(password);
 
             File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + Environment.NewLine);
 
