@@ -60,7 +60,7 @@ namespace PasswordGen
             //var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
             var password = new StringBuilder(String.Empty);
             //while (pattern.Length > 0)
-            System.Threading.Tasks.Parallel.ForEach(rndPattern, c =>
+            foreach (var c in rndPattern)
             {
                 //var patternPos = Random.Next(0, pattern.Length - 1);
                 //switch (pattern[patternPos])
@@ -79,9 +79,9 @@ namespace PasswordGen
                         password.Append(WriteRandomSpecialCharacter());
                         break;
                 }
-
+                
                 //pattern = pattern.Remove(patternPos, 1);
-            });
+            }
             
             return password.ToString();
         }
