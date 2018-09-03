@@ -54,17 +54,12 @@ namespace PasswordGen
 
         private static string GeneratePasswordFromPattern(string[] args)
         {
-            string pattern = args[1].PadRight(Convert.ToInt32(args[0]), 'l');
-
-            char[] rndPattern = pattern.OrderBy(x => Random.Next()).ToArray();
-            //var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
-            var password = new StringBuilder(String.Empty);
-            //while (pattern.Length > 0)
-            foreach (var c in rndPattern)
+            var pattern = new StringBuilder(args[1].PadRight(Convert.ToInt32(args[0]), 'l'));
+            var password = new StringBuilder(string.Empty);
+            while (pattern.Length > 0)
             {
-                //var patternPos = Random.Next(0, pattern.Length - 1);
-                //switch (pattern[patternPos])
-                switch (c)
+                var patternPos = Random.Next(0, pattern.Length - 1);
+                switch (pattern[patternPos])
                 {
                     case 'l':
                         password.Append(WriteRandomLowerCaseLetter());
@@ -79,10 +74,10 @@ namespace PasswordGen
                         password.Append(WriteRandomSpecialCharacter());
                         break;
                 }
-                
-                //pattern = pattern.Remove(patternPos, 1);
+
+                pattern = pattern.Remove(patternPos, 1);
             }
-            
+
             return password.ToString();
         }
 
