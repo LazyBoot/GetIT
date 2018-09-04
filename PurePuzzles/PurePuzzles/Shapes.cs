@@ -22,6 +22,24 @@ namespace PurePuzzles
         }
 
 
+        public static void DrawTriangle()
+        {
+            for (var row = 0; row < 4; row++)
+            {
+                for (var i = 0; i < 4 - Math.Abs(4 - row); i++)
+                {
+                    Console.Write(Space);
+                }
+
+                for (var col = 0; col < 4 - row; col++)
+                {
+                    Console.Write(HashTag + HashTag);
+                }
+
+                Console.Write(Environment.NewLine);
+            }
+        }
+
         public static void DrawDiamond()
         {
             for (var row = 1; row <= 4; row++)
@@ -40,24 +58,6 @@ namespace PurePuzzles
             }
 
             DrawTriangle();
-        }
-
-        public static void DrawTriangle()
-        {
-            for (var row = 0; row < 4; row++)
-            {
-                for (var i = 0; i < 4 - Math.Abs(4 - row); i++)
-                {
-                    Console.Write(Space);
-                }
-
-                for (var col = 0; col < 4 - row; col++)
-                {
-                    Console.Write(HashTag + HashTag);
-                }
-
-                Console.Write(Environment.NewLine);
-            }
         }
 
         public static void DrawCross()
