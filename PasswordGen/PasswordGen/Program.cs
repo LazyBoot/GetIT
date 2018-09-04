@@ -147,11 +147,6 @@ namespace PasswordGen
             return true;
         }
 
-        private static void GenPassword()
-        {
-            throw new NotImplementedException();
-        }
-
         private static void ShowOptions()
         {
             Console.WriteLine(@"PasswordGenerator  
