@@ -14,6 +14,7 @@ namespace PurePuzzles
 
             var sortedWords = words.OrderByDescending(w => w.Length).ToArray();
 
+            // ReSharper disable once StringLiteralTypo
             const string vowels = "AEIOUYW";
 
             var vowelCounts = new int[sortedWords.Length];
