@@ -2,7 +2,7 @@
 
 namespace PurePuzzles
 {
-    class Shapes
+    internal class Shapes
     {
         private const string MidSpace = "    ";
         private const string HashTag = "#";
@@ -24,14 +24,14 @@ namespace PurePuzzles
 
         public static void DrawDiamond()
         {
-            for (int row = 1; row <= 4; row++)
+            for (var row = 1; row <= 4; row++)
             {
-                for (int i = 0; i < 4 - row; i++)
+                for (var i = 0; i < 4 - row; i++)
                 {
                     Console.Write(Space);
                 }
 
-                for (int col = 0; col < 4 - Math.Abs(4 - row); col++)
+                for (var col = 0; col < 4 - Math.Abs(4 - row); col++)
                 {
                     Console.Write(HashTag + HashTag);
                 }
@@ -44,14 +44,14 @@ namespace PurePuzzles
 
         public static void DrawTriangle()
         {
-            for (int row = 0; row < 4; row++)
+            for (var row = 0; row < 4; row++)
             {
-                for (int i = 0; i < 4 - Math.Abs(4 - row); i++)
+                for (var i = 0; i < 4 - Math.Abs(4 - row); i++)
                 {
                     Console.Write(Space);
                 }
 
-                for (int col = 0; col < 4 - row; col++)
+                for (var col = 0; col < 4 - row; col++)
                 {
                     Console.Write(HashTag + HashTag);
                 }
@@ -63,24 +63,24 @@ namespace PurePuzzles
         public static void DrawCross()
         {
 
-            for (int row = 1; row <= 4; row++)
+            for (var row = 1; row <= 4; row++)
             {
-                for (int i = 0; i < 4 - Math.Abs(4 - row) - 1; i++)
+                for (var i = 0; i < 4 - Math.Abs(4 - row) - 1; i++)
                 {
                     Console.Write(Space);
                 }
 
-                for (int col = 0; col < 4 - Math.Abs(4 - row); col++)
+                for (var col = 0; col < 4 - Math.Abs(4 - row); col++)
                 {
                     Console.Write(HashTag);
                 }
 
-                for (int i = 0; i < 4 - row; i++)
+                for (var i = 0; i < 4 - row; i++)
                 {
                     Console.Write(MidSpace);
                 }
 
-                for (int col = 0; col < 4 - Math.Abs(4 - row); col++)
+                for (var col = 0; col < 4 - Math.Abs(4 - row); col++)
                 {
                     Console.Write(HashTag);
                 }
@@ -88,24 +88,24 @@ namespace PurePuzzles
                 Console.Write(Environment.NewLine);
             }
 
-            for (int row = 0; row < 4; row++)
+            for (var row = 0; row < 4; row++)
             {
-                for (int i = 0; i < 4 - row - 1; i++)
+                for (var i = 0; i < 4 - row - 1; i++)
                 {
                     Console.Write(Space);
                 }
 
-                for (int col = 0; col < 4 - row; col++)
+                for (var col = 0; col < 4 - row; col++)
                 {
                     Console.Write(HashTag);
                 }
 
-                for (int i = 0; i < row; i++)
+                for (var i = 0; i < row; i++)
                 {
                     Console.Write(MidSpace);
                 }
 
-                for (int col = 0; col < 4 - row; col++)
+                for (var col = 0; col < 4 - row; col++)
                 {
                     Console.Write(HashTag);
                 }

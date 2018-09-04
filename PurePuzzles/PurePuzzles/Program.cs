@@ -2,12 +2,16 @@
 
 namespace PurePuzzles
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Shapes.DrawShapes();
-        }
 
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine(Environment.NewLine);
+
+            WordStats.ShowWordStats();
+        }
     }
 }
