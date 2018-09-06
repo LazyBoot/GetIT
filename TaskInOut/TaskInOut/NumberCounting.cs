@@ -1,24 +1,10 @@
 ﻿using System;
-using System.Linq;
 
 namespace TaskInOut
 {
-    class Program
+    class NumberCounting
     {
-        public static void Main(string[] args)
-        {
-            // var intArray = new int[6];
-            //int[] intArray = { 1, 2, 3, 4, 5,94,1 };
-            //Console.WriteLine(IsArraySorted.isArraySorted(intArray));
-            //string plaintext = "Ibsens Ripsbaerbusker og andre buksvekster.";
-            //Console.WriteLine(Ciphers.CipherArray(plaintext));
-            //Console.WriteLine(Ciphers.DecipherArray(Ciphers.CipherArray(plaintext)));
-
-            var numbers = GenerateNumbers();
-            CountNumbers(numbers);
-        }
-
-        private static int[] GenerateNumbers()
+        public static int[] GenerateNumbers()
         {
             var numbers = new int[40];
 
@@ -33,7 +19,7 @@ namespace TaskInOut
             return numbers;
         }
 
-        private static void CountNumbers(int[] numbers)
+        public static void CountNumbers(int[] numbers)
         {
             var numberCounts = new int[10];
 
@@ -56,5 +42,4 @@ namespace TaskInOut
             Console.WriteLine($"Number: {mostNumbers} - Counts: {numberCounts[mostNumbers]}");
         }
     }
-
 }
