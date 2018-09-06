@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Ciphers.cs" />
     <Compile Include="IsArraySorted.cs" />
+    <Compile Include="NumberCounting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
