@@ -41,11 +41,9 @@ namespace PasswordGen
             watch.Stop();
             Console.WriteLine("Runtime: {0} ms", watch.ElapsedMilliseconds);
 
-            if (noArgs)
-            {
-                Console.Write("Press any key to exit...");
-                Console.ReadKey();
-            }
+            if (!noArgs) return;
+            Console.Write("Press any key to exit...");
+            Console.ReadKey();
 #endif
          }
 
