@@ -1,30 +1,27 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace PasswordGen
 {
     class Program
     {
-        static readonly Random Random = new Random();
         static void Main(string[] args)
         {
 #if DEBUG
-            var noargs = false;
+            var noArgs = false;
             if (args.Length == 0)
             {
                 Console.Write("Enter commandline arguments: ");
                 args = Console.ReadLine()?.Split(' ');
-                noargs = true;
+                noArgs = true;
             }
             File.WriteAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", "");
             var watch = System.Diagnostics.Stopwatch.StartNew();
 #endif
 
 
-            if (!IsValid(args))
+            if (!Validation.IsValid(args))
             {
                 ShowOptions();
 
@@ -35,7 +32,7 @@ namespace PasswordGen
                 return;
             }
 
-            var password = GeneratePasswordFromPattern(args);
+            var password = RandomGeneration.GeneratePasswordFromPattern(args);
             //Console.WriteLine(password);
 
             File.AppendAllText(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\password.txt", password + Environment.NewLine);
@@ -44,108 +41,13 @@ namespace PasswordGen
             watch.Stop();
             Console.WriteLine("Runtime: {0} ms", watch.ElapsedMilliseconds);
 
-            if (noargs)
+            if (noArgs)
             {
                 Console.Write("Press any key to exit...");
                 Console.ReadKey();
             }
 #endif
          }
-
-        private static string GeneratePasswordFromPattern(string[] args)
-        {
-
-            var password = new StringBuilder(string.Empty);
-            Console.Write("Generating password...");
-            using (var progress = new ProgressBar())
-            {
-                var length = Convert.ToInt32(args[0]);
-                var pattern = new StringBuilder(args[1].PadRight(length, 'l'));
-                while (pattern.Length > 0) // TODO: Multithread!
-                {
-                    progress.Report(1 - (double)pattern.Length / length);
-                    var patternPos = Random.Next(0, pattern.Length - 1);
-                    switch (pattern[patternPos])
-                    {
-                        case 'l':
-                            password.Append(WriteRandomLowerCaseLetter());
-                            break;
-                        case 'L':
-                            password.Append(WriteRandomUpperCaseLetter());
-                            break;
-                        case 'd':
-                            password.Append(WriteRandomDigit());
-                            break;
-                        case 's':
-                            password.Append(WriteRandomSpecialCharacter());
-                            break;
-                    }
-
-                    pattern = pattern.Remove(patternPos, 1);
-                }
-
-            }
-            return password.ToString();
-        }
-
-        private static char WriteRandomLowerCaseLetter()
-        {
-            return GetRandomLetter('a', 'z');
-        }
-
-        private static char WriteRandomUpperCaseLetter()
-        {
-            return GetRandomLetter('A', 'Z');
-        }
-
-        private static int WriteRandomDigit()
-        {
-            return Random.Next(0, 9);
-        }
-
-        private static char WriteRandomSpecialCharacter()
-        {
-            const string specialCharacters = @"!""#¤%&/(){}[]";
-            return specialCharacters[Random.Next(0, specialCharacters.Length - 1)];
-        }
-
-        private static char GetRandomLetter(char min, char max)
-        {
-            return (char)Random.Next(min, max);
-        }
-
-        private static bool IsValid(string[] args)
-        {
-            return args.Length == 2 && CheckNumber(args[0]) && CheckOptions(args[1]);
-        }
-
-        private static bool CheckOptions(string s)
-        {
-            const string validCharacters = "lLds";
-            foreach (var c in s)
-            {
-                if (!validCharacters.Contains(c)) return false;
-            }
-
-            return true;
-        }
-
-        private static bool CheckNumber(string s)
-        {
-
-            foreach (var c in s)
-            {
-                if (!char.IsDigit(c))
-                    return false;
-            }
-
-            if (Convert.ToInt64(s) > int.MaxValue)
-            {
-                Console.WriteLine("Max allowed length is " + short.MaxValue);
-                return false;
-            }
-            return true;
-        }
 
         private static void ShowOptions()
         {
