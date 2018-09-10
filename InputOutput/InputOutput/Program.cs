@@ -4,13 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace InputOutput
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var fullOrdListe = ReadWords();
 
