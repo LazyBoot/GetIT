@@ -78,22 +78,22 @@ namespace InputOutput
 
         private static string[] ReadWords()
         {
-            var lastWord = string.Empty;
+            //var lastWord = string.Empty;
             var ordListe = new List<string>();
             var ordListeFil = File.ReadAllLines("fullform_bm.txt", Encoding.UTF8);
             for (var index = 30; index < ordListeFil.Length; index++)
             {
                 var word = ordListeFil[index].Split('\t')[1];
 
-                if (word == lastWord)
-                    continue;
-                lastWord = word;
+                //if (word == lastWord)
+                //    continue;
+                //lastWord = word;
 
 
-                ordListe.Add(word);
+                ordListe.Add(word.ToLower());
             }
 
-            return ordListe.ToArray();
+            return ordListe.Distinct().ToArray();
         }
     }
 }
