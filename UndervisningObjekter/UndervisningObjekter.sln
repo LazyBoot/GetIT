@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndervisningObjekter", "UndervisningObjekter\UndervisningObjekter.csproj", "{004713C6-5678-46E5-932F-A5AC5F4F1722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Undervisning3", "Undervisning3\Undervisning3.csproj", "{DC1FDEA5-CBAA-40CF-89D3-295B1F7295DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{004713C6-5678-46E5-932F-A5AC5F4F1722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004713C6-5678-46E5-932F-A5AC5F4F1722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004713C6-5678-46E5-932F-A5AC5F4F1722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004713C6-5678-46E5-932F-A5AC5F4F1722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC1FDEA5-CBAA-40CF-89D3-295B1F7295DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC1FDEA5-CBAA-40CF-89D3-295B1F7295DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC1FDEA5-CBAA-40CF-89D3-295B1F7295DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC1FDEA5-CBAA-40CF-89D3-295B1F7295DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0EB4CAA9-AEB3-4F81-97AD-1BF9B6A20EC2}
+	EndGlobalSection
+EndGlobal
