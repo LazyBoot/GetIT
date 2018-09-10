@@ -31,17 +31,17 @@ namespace InputOutput
             var randomWord = ordListe[rnd.Next(0, ordListe.Length)];
 
             var lastPart = randomWord.Substring(randomWord.Length - 3);
-            var foundWord = CheckRandom(randomWord, ordListe, lastPart);
+            var foundWord = CheckRandom(ordListe, lastPart);
             if (string.IsNullOrEmpty(foundWord))
             {
                 lastPart = randomWord.Substring(randomWord.Length - 4);
-                foundWord = CheckRandom(randomWord, ordListe, lastPart);
+                foundWord = CheckRandom(ordListe, lastPart);
             }
 
             if (string.IsNullOrEmpty(foundWord))
             {
                 lastPart = randomWord.Substring(randomWord.Length - 5);
-                foundWord = CheckRandom(randomWord, ordListe, lastPart);
+                foundWord = CheckRandom(ordListe, lastPart);
             }
 
             if (!string.IsNullOrEmpty(foundWord) && Array.IndexOf(fullOrdListe, lastPart) != -1)
@@ -62,7 +62,7 @@ namespace InputOutput
             return ordListe.ToArray();
         }
 
-        private static string CheckRandom(string randomWord, string[] ordListe, string lastPart)
+        private static string CheckRandom(string[] ordListe, string lastPart)
         {
             var foundWord = string.Empty;
             foreach (var word in ordListe)
