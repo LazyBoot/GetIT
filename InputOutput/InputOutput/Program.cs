@@ -9,9 +9,12 @@ namespace InputOutput
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            var fullOrdListe = ReadWords();
+            if (args.Length == 0)
+                args[0] = "fullform_bm.txt";
+
+            var fullOrdListe = ReadWords(args[0]);
 
             var ordListe = CheckLength(fullOrdListe);
 
@@ -76,11 +79,11 @@ namespace InputOutput
             return foundWord;
         }
 
-        private static string[] ReadWords()
+        private static string[] ReadWords(string file)
         {
             //var lastWord = string.Empty;
             var ordListe = new List<string>();
-            var ordListeFil = File.ReadAllLines("fullform_bm.txt", Encoding.UTF8);
+            var ordListeFil = File.ReadAllLines(file, Encoding.UTF8);
             for (var index = 30; index < ordListeFil.Length; index++)
             {
                 var word = ordListeFil[index].Split('\t')[1];
