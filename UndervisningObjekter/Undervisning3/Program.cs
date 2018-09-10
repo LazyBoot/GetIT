@@ -33,7 +33,8 @@ namespace Undervisning3
         private static void DoSomething(Box box, int i)
         {
             i += 10;
-            box.Height += 10;
+            //box.Height += 10;
+            box = new Box() { Width = -1, Height = -1 };
         }
 
         private static void DemoString()
