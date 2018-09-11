@@ -8,9 +8,11 @@ namespace PurePuzzles
         public static void ShowWordStats()
         {
             Console.Write("Enter a sentence, without punctuation: ");
-            var words = (Console.ReadLine() ?? string.Empty).Split(' ');
+            var input = (Console.ReadLine() ?? string.Empty);
 
-            if (words.Length == 0) words = "This is a test sentence".Split(' ');
+            if (string.IsNullOrEmpty(input)) input = "This is a test sentence";
+
+            var words = input.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
 
             var sortedWords = words.OrderByDescending(w => w.Length).ToArray();
 
