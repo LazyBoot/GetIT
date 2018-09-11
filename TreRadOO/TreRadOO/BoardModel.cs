@@ -18,7 +18,7 @@ namespace TreRadOO
             var row = position.Substring(1, 1);
             var col = position.Substring(0, 1).ToLower();
 
-            int cell = -1;
+            var cell = -1;
             if (row == "1")
             {
                 if (col == "a") cell = 0;
@@ -38,6 +38,11 @@ namespace TreRadOO
                 else if (col == "c") cell = 8;
             }
 
+            return SetChar(cell, symbol);
+        }
+
+        private bool SetChar(int cell, char symbol)
+        {
             if (Cells[cell] != ' ' || cell == -1) return false;
 
             Cells[cell] = symbol;
@@ -64,7 +69,7 @@ namespace TreRadOO
                 randomCell = _rnd.Next(0, 9);
             }
 
-            Cells[randomCell] = 'o';
+            SetChar(randomCell, 'o');
         }
     }
 }
