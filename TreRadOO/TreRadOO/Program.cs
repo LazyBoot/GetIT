@@ -27,14 +27,12 @@ namespace TreRadOO
 
         private static bool CheckWinner(BoardModel boardModel)
         {
-            if (Game.CheckWin(boardModel))
-            {
-                Console.WriteLine();
-                Console.WriteLine($"{Game.Winner} want!");
-                return true;
-            }
+            if (!Game.CheckWin(boardModel)) return false;
 
-            return false;
+            Console.WriteLine();
+            Console.WriteLine($"{Game.Winner} want!");
+            return true;
+
         }
     }
 }

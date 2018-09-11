@@ -38,7 +38,7 @@ namespace TreRadOO
                 else if (col == "c") cell = 8;
             }
 
-            if (Cells[cell] != ' ') return false;
+            if (Cells[cell] != ' ' || cell == -1) return false;
 
             Cells[cell] = symbol;
             return true;
