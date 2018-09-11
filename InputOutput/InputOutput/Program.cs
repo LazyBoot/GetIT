@@ -9,28 +9,32 @@ namespace InputOutput
 {
     class Program
     {
+        private static readonly Random Rnd = new Random();
+
         static void Main(string[] args)
         {
-            if (args.Length == 0)
-                args[0] = "fullform_bm.txt";
+            var file = args.Length != 0 ? args[0] : "fullform_bm.txt";
 
-            var fullOrdListe = ReadWords(args[0]);
+            var fullOrdListe = ReadWords(file);
 
             var ordListe = CheckLength(fullOrdListe);
 
-            for (int i = 0; i < 200; i++)
-            {
-                FindWord(ordListe, fullOrdListe);
-                Thread.Sleep(10);
-            }
+            //for (int i = 0; i < 200; i++)
+            //{
+            //    FindWord(ordListe, fullOrdListe);
+            //}
 
+            var funnetOrd = 0;
+            while (funnetOrd < 200)
+            {
+                if (FindWord(ordListe, fullOrdListe))
+                    funnetOrd++;
+            }
         }
 
-        private static void FindWord(string[] ordListe, string[] fullOrdListe)
+        private static bool FindWord(string[] ordListe, string[] fullOrdListe)
         {
-            Random rnd = new Random();
-
-            var randomWord = ordListe[rnd.Next(0, ordListe.Length)];
+            var randomWord = ordListe[Rnd.Next(0, ordListe.Length)];
 
             var lastPart = randomWord.Substring(randomWord.Length - 3);
             var foundWord = CheckRandom(ordListe, lastPart);
@@ -49,7 +53,10 @@ namespace InputOutput
             if (!string.IsNullOrEmpty(foundWord) && Array.IndexOf(fullOrdListe, lastPart) != -1)
             {
                 Console.WriteLine($"Fant {randomWord} og {foundWord} - match: {lastPart}");
+                return true;
             }
+
+            return false;
         }
 
         private static string[] CheckLength(string[] fullOrdListe)
@@ -57,7 +64,7 @@ namespace InputOutput
             var ordListe = new List<string>();
             foreach (var word in fullOrdListe)
             {
-                if ((word.Length == 7 || word.Length == 8 || word.Length == 9 || word.Length == 10) && !word.Contains('-'))
+                if (word.Length >= 7 && word.Length <= 10 && !word.Contains('-'))
                     ordListe.Add(word);
             }
 
