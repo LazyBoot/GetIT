@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace TilfeldigFirkant
 {
@@ -12,7 +13,11 @@ namespace TilfeldigFirkant
             while (true)
             {
                 var boxes = CreateBoxes();
-                Show(boxes);
+                for (int i = 0; i < 200; i++)
+                {
+                    Show(boxes);
+                    Thread.Sleep(50);
+                }
                 Console.WriteLine("(press enter for new. ctrl+c=exit)");
                 Console.ReadLine();
             }
@@ -35,6 +40,7 @@ namespace TilfeldigFirkant
             var screen = new Screen(_width, _height);
             foreach (var box in boxes)
             {
+                box.Move(screen);
                 screen.Add(box);
             }
             screen.Show();

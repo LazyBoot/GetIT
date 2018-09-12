@@ -5,9 +5,13 @@ namespace TilfeldigFirkant
     public class Screen
     {
         private ScreenRow[] _rows;
+        public readonly int Width;
+        public readonly int Height;
 
         public Screen(int width, int height)
         {
+            Height = height;
+            Width = width;
             _rows = new ScreenRow[height];
             for (int row = 0; row < height; row++)
             {
