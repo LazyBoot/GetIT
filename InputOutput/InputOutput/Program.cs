@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace InputOutput
 {
@@ -90,17 +88,30 @@ namespace InputOutput
         {
             //var lastWord = string.Empty;
             var ordListe = new List<string>();
-            var ordListeFil = File.ReadAllLines(file, Encoding.UTF8);
-            for (var index = 30; index < ordListeFil.Length; index++)
+            //var ordListeFil = File.ReadAllLines(file, Encoding.UTF8);
+            //for (var index = 30; index < ordListeFil.Length; index++)
+            //{
+            //    var word = ordListeFil[index].Split('\t')[1];
+
+            //    //if (word == lastWord)
+            //    //    continue;
+            //    //lastWord = word;
+
+            using (StreamReader reader = new StreamReader(file))
             {
-                var word = ordListeFil[index].Split('\t')[1];
+                for (int i = 0; i < 30; i++)
+                {
+                    reader.ReadLine();
+                }
 
-                //if (word == lastWord)
-                //    continue;
-                //lastWord = word;
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var word = line.Split('\t')[1];
+                    ordListe.Add(word.ToLower());
 
-
-                ordListe.Add(word.ToLower());
+                }
+                
             }
 
             return ordListe.Distinct().ToArray();
