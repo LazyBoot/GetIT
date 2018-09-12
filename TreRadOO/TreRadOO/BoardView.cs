@@ -6,6 +6,8 @@ namespace TreRadOO
     {
         public static void Show(BoardModel bm)
         {
+            Console.Clear();
+
             Console.WriteLine("  a b c");
             Console.WriteLine(" ┌─────┐");
             Console.WriteLine($"1│{bm.Cells[0]} {bm.Cells[1]} {bm.Cells[2]}│");
