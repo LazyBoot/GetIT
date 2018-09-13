@@ -7,7 +7,7 @@ namespace TaskInOut
     class Ciphers
     {
         private static Random rnd = new Random();
-        private static readonly char[] Alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        private static readonly char[] Alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ".ToCharArray();
         private static char[] cipherKey = ScrambleProperly();
         //private static char[] cipherKey = alpha.OrderBy(x=>scramble.Next()).ToArray();
 
@@ -56,15 +56,15 @@ namespace TaskInOut
 
         private static char[] ScrambleProperly()
         {
-            var retried = 0;
-            var outKey = Alpha.OrderBy(x => rnd.Next()).ToArray();
-            while (TestKey(outKey))
+            //var retried = 0;
+            char[] outKey;
+            do
             {
                 outKey = Alpha.OrderBy(x => rnd.Next()).ToArray();
-                retried++;
-            }
+                //retried++;
+            } while (TestKey(outKey));
 
-            Console.WriteLine(retried);
+            //Console.WriteLine(retried);
             return outKey;
         }
 
