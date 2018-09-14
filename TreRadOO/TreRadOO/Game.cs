@@ -19,9 +19,9 @@
 
         private static bool CheckCells(BoardModel bm, int cellIndex0, int cellIndex1, int cellIndex2)
         {
-            var cell0 = bm.Cells[cellIndex0];
-            var cell1 = bm.Cells[cellIndex1];
-            var cell2 = bm.Cells[cellIndex2];
+            var cell0 = bm.Cells[cellIndex0].GetSymbol();
+            var cell1 = bm.Cells[cellIndex1].GetSymbol();
+            var cell2 = bm.Cells[cellIndex2].GetSymbol();
 
             if (cell0 == ' ' || cell1 != cell0 || cell2 != cell0) return false;
 

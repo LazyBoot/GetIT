@@ -10,9 +10,9 @@ namespace TreRadOO
 
             Console.WriteLine("  a b c");
             Console.WriteLine(" ┌─────┐");
-            Console.WriteLine($"1│{bm.Cells[0]} {bm.Cells[1]} {bm.Cells[2]}│");
-            Console.WriteLine($"2│{ bm.Cells[3]} { bm.Cells[4]} { bm.Cells[5]}│");
-            Console.WriteLine($"3│{bm.Cells[6]} {bm.Cells[7]} {bm.Cells[8]}│");
+            Console.WriteLine($"1│{bm.Cells[0].GetSymbol()} {bm.Cells[1].GetSymbol()} {bm.Cells[2].GetSymbol()}│");
+            Console.WriteLine($"2│{ bm.Cells[3].GetSymbol()} { bm.Cells[4].GetSymbol()} { bm.Cells[5].GetSymbol()}│");
+            Console.WriteLine($"3│{bm.Cells[6].GetSymbol()} {bm.Cells[7].GetSymbol()} {bm.Cells[8].GetSymbol()}│");
             Console.WriteLine(" └─────┘");
         }
     }

@@ -5,13 +5,18 @@ namespace TreRadOO
 {
     class BoardModel
     {
-        public char[] Cells = {
-            ' ', ' ', ' ',
-            ' ', ' ', ' ',
-            ' ', ' ', ' '
-        };
+        public Cell[] Cells = { new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell(), new Cell()};
 
         private readonly Random _rnd = new Random();
+
+        //public BoardModel()
+        //{
+        //    for (var i = 0; i < Cells.Length; i++)
+        //    {
+        //        Cells[i] = new Cell();
+        //    }
+
+        //}
 
         private bool SetChar(string position, char symbol)
         {
@@ -43,10 +48,10 @@ namespace TreRadOO
 
         private bool SetChar(int cell, char symbol)
         {
-            if (Cells[cell] != ' ' || cell == -1) return false;
+            if (cell == -1) return false;
 
-            Cells[cell] = symbol;
-            return true;
+            
+            return Cells[cell].SetSymbol(symbol);
         }
 
         public bool SetCross(string position)
@@ -63,7 +68,7 @@ namespace TreRadOO
         public void SetRandomCircle()
         {
             var randomCell = _rnd.Next(0, 9);
-            while (Cells[randomCell] != ' ')
+            while (Cells[randomCell].GetSymbol() != ' ')
             {
                 Thread.Sleep(10);
                 randomCell = _rnd.Next(0, 9);
