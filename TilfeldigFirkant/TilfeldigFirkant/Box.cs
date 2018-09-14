@@ -20,8 +20,8 @@ namespace TilfeldigFirkant
             Y = random.Next(maxY - _minimumSize);
             Width = random.Next(_minimumSize, maxX - X);
             Height = random.Next(_minimumSize, maxY - Y);
-            RetningX = 1;
-            RetningY = 1;
+            RetningX = random.Next(0, 100) < 50 ? 1 : -1;
+            RetningY = random.Next(0, 100) < 50 ? 1 : -1;
         }
 
         public Box(int x, int y, int width, int height)

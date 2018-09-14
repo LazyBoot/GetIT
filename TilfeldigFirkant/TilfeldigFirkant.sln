@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TilfeldigFirkant", "TilfeldigFirkant\TilfeldigFirkant.csproj", "{858DC44B-A153-466D-939F-923B9F108294}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TilfeldigFirkantTest", "TilfeldigFirkantTest\TilfeldigFirkantTest.csproj", "{092D4532-B360-4CE4-B2B8-1B176ABD5E9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{858DC44B-A153-466D-939F-923B9F108294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{858DC44B-A153-466D-939F-923B9F108294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{858DC44B-A153-466D-939F-923B9F108294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092D4532-B360-4CE4-B2B8-1B176ABD5E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092D4532-B360-4CE4-B2B8-1B176ABD5E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092D4532-B360-4CE4-B2B8-1B176ABD5E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092D4532-B360-4CE4-B2B8-1B176ABD5E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,6 @@
 ﻿namespace TilfeldigFirkant
 {
-    class ScreenCell
+    public class ScreenCell
     {
         public bool Up { get; private set; }
         public bool Down { get; private set; }

@@ -5,8 +5,8 @@ namespace TilfeldigFirkant
 {
     class Program
     {
-        private static int _width = 40;
-        private static int _height = 20;
+        private static int _width = Console.WindowWidth-1;
+        private static int _height = Console.WindowHeight-2;
 
         static void Main()
         {
@@ -43,6 +43,7 @@ namespace TilfeldigFirkant
                 box.Move(screen);
                 screen.Add(box);
             }
+            Console.Clear();
             screen.Show();
         }
     }

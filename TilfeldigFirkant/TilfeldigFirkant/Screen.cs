@@ -33,7 +33,6 @@ namespace TilfeldigFirkant
 
         public void Show()
         {
-            Console.Clear();
             foreach (var row in _rows)
             {
                 row.Show();
