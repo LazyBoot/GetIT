@@ -13,9 +13,13 @@ namespace TilfeldigFirkantTest
         {
             var box = new Box(2, 3, 4, 5);
 
+            StreamWriter standardOut = new StreamWriter(Console.OpenStandardOutput());
+            standardOut.AutoFlush = true;
+
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
+
                 var screen = new Screen(10, 10);
                 screen.Add(box);
                 screen.Show();
@@ -25,8 +29,6 @@ namespace TilfeldigFirkantTest
                 Assert.AreEqual(expected, sw.ToString());
             }
 
-            StreamWriter standardOut = new StreamWriter(Console.OpenStandardOutput());
-            standardOut.AutoFlush = true;
             Console.SetOut(standardOut);
         }
     }
