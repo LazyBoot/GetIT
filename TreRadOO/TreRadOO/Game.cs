@@ -1,6 +1,6 @@
 ﻿namespace TreRadOO
 {
-    class Game
+    public class Game
     {
         public static string Winner;
 

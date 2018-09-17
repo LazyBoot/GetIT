@@ -31,6 +31,9 @@ namespace TreRadOO
             BoardView.Show(boardModel);
             Console.WriteLine();
             Console.WriteLine($"{Game.Winner} want!");
+            Console.WriteLine("Trykk R for restart, eller en annen knapp for å avslutte...");
+            if (Console.ReadKey().Key == ConsoleKey.R)
+                Main();
             return true;
 
         }

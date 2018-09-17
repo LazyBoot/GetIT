@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace TreRadOO
 {
-    class BoardModel
+    public class BoardModel
     {
         public Cell[] Cells = new Cell[9];
 

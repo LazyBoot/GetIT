@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TreRadOO
 {
-    class Cell
+    public class Cell
     {
         private char _symbol;
 

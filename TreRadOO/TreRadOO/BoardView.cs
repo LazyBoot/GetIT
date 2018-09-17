@@ -2,7 +2,7 @@
 
 namespace TreRadOO
 {
-    class BoardView
+    public class BoardView
     {
         public static void Show(BoardModel bm)
         {
