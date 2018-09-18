@@ -22,7 +22,8 @@ namespace InputOutput
                 while ((line = reader.ReadLine()) != null)
                 {
                     var word = line.Split('\t')[1];
-                    ordListe.Add(word.ToLower());
+                    if (!word.Contains('-') || !word.Contains(' ') || !char.IsUpper(word[0]))
+                        ordListe.Add(word.ToLower());
 
                 }
                 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace InputOutput
 {
@@ -40,7 +39,7 @@ namespace InputOutput
             var ordListe = new List<string>();
             foreach (var word in fullOrdListe)
             {
-                if (word.Length >= 7 && word.Length <= 10 && !word.Contains('-'))
+                if (word.Length >= 7 && word.Length <= 10)
                     ordListe.Add(word);
             }
 
