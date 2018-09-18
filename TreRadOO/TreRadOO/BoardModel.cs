@@ -19,28 +19,29 @@ namespace TreRadOO
 
         private bool SetChar(string position, char symbol)
         {
-            var row = position.Substring(1, 1);
-            var col = position.Substring(0, 1).ToLower();
+            var row = Convert.ToInt32(position[1].ToString()) - 1;
+            var col = (int)char.ToLower(position[0]) - 'a';
 
-            var cell = -1;
-            if (row == "1")
-            {
-                if (col == "a") cell = 0;
-                else if (col == "b") cell = 1;
-                else if (col == "c") cell = 2;
-            }
-            else if (row == "2")
-            {
-                if (col == "a") cell = 3;
-                else if (col == "b") cell = 4;
-                else if (col == "c") cell = 5;
-            }
-            else if (row == "3")
-            {
-                if (col == "a") cell = 6;
-                else if (col == "b") cell = 7;
-                else if (col == "c") cell = 8;
-            }
+            var cell = col + row * 3;
+            //var cell = -1;
+            //if (row == "1")
+            //{
+            //    if (col == "a") cell = 0;
+            //    else if (col == "b") cell = 1;
+            //    else if (col == "c") cell = 2;
+            //}
+            //else if (row == "2")
+            //{
+            //    if (col == "a") cell = 3;
+            //    else if (col == "b") cell = 4;
+            //    else if (col == "c") cell = 5;
+            //}
+            //else if (row == "3")
+            //{
+            //    if (col == "a") cell = 6;
+            //    else if (col == "b") cell = 7;
+            //    else if (col == "c") cell = 8;
+            //}
 
             return SetChar(cell, symbol);
         }
@@ -48,7 +49,7 @@ namespace TreRadOO
         private bool SetChar(int cell, char symbol)
         {
             if (cell == -1) return false;
-            
+
             return Cells[cell].SetSymbol(symbol);
         }
 
