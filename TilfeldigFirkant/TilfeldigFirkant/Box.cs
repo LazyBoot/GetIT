@@ -30,7 +30,21 @@ namespace TilfeldigFirkant
             Y = y;
             Width = width;
             Height = height;
+            var random = new Random();
+            RetningX = random.Next(0, 100) < 50 ? 1 : -1;
+            RetningY = random.Next(0, 100) < 50 ? 1 : -1;
         }
+
+        public Box(int x, int y, int width, int height, int retningX, int retningY)
+        {
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+            RetningX = retningX;
+            RetningY = retningY;
+        }
+
 
         public int GetTopRowY()
         {
