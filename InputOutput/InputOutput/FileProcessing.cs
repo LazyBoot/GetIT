@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace InputOutput
 {
@@ -10,7 +11,7 @@ namespace InputOutput
         {
             var ordListe = new List<string>();
 
-            using (StreamReader reader = new StreamReader(file))
+            using (StreamReader reader = new StreamReader(file, Encoding.GetEncoding("iso-8859-1")))
             {
                 for (int i = 0; i < 30; i++)
                 {
