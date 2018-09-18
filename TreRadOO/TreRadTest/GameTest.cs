@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TreRadOO;
 
@@ -37,5 +38,6 @@ namespace TreRadTest
             bm.Cells[cell2].SetSymbol(' ');
             bm.Cells[cell3].SetSymbol(' ');
         }
+
     }
 }

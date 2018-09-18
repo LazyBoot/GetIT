@@ -23,6 +23,10 @@ namespace TreRadOO
             var col = (int)char.ToLower(position[0]) - 'a';
 
             var cell = col + row * 3;
+
+            if (cell >= Cells.Length)
+                cell = -1;
+
             //var cell = -1;
             //if (row == "1")
             //{
