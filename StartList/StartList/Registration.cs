@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StartList
+﻿namespace StartList
 {
     public class Registration
     {
@@ -15,6 +9,16 @@ namespace StartList
         public string Group;
         public string Class;
 
+        public Registration(string[] line)
+        {
+            StartNumber = line[0];
+            Name = line[1];
+            Club = line[2];
+            Nationality = line[3];
+            Group = line[4];
+            Class = line[5];
+        }
+
         public Registration(string startNumber, string name, string club, string nationality, string group, string @class)
         {
             StartNumber = startNumber;
@@ -23,6 +27,11 @@ namespace StartList
             Nationality = nationality;
             Group = group;
             Class = @class;
+        }
+
+        public override string ToString()
+        {
+            return $"{StartNumber} - {Name} - {Club} - {Nationality} - {Group} - {Class}";
         }
     }
 }

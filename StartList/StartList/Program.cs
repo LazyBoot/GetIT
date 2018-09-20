@@ -1,26 +1,40 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic.FileIO;
 
 namespace StartList
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var file = "startlist.csv";
+            const string inFile = "startlist.csv";
+            const string outFile = "startList.txt";
 
-            var registrations = UsingParser(file);
+            var registrationModel = new RegistrationModel();
+            UsingParser(inFile, registrationModel);
+
+            using (var output = new Output(new StreamWriter(outFile, false)))
+            {
+                foreach (var club in registrationModel.Clubs.OrderByDescending(c => c.Registrations.Count).ThenBy(c => c.Name))
+                {
+                    output.WriteLine(club.Name);
+                    output.WriteLine("-------------------------");
+                    output.WriteLine($"Totalt påmeldte: {club.Registrations.Count.ToString()}");
+
+                    foreach (var registration in club.Registrations.GroupBy(r => r.Class))
+                    {
+                        output.WriteLine($"{registration.Key} - {registration.Count()}");
+                    }
+
+                    output.WriteLine(string.Empty);
+                }
+            }
         }
 
-        private static List<Registration> UsingParser(string file)
+        private static void UsingParser(string file, RegistrationModel registrationModel)
         {
-            var registrations = new List<Registration>();
-
             using (var parser = new TextFieldParser(file))
             {
                 parser.SetDelimiters(",");
@@ -29,37 +43,26 @@ namespace StartList
 
                 while (!parser.EndOfData)
                 {
-                    var fields = parser.ReadFields();
-                    registrations.Add(new Registration(fields[0], fields[1], fields[2], fields[3], fields[4], fields[5]));
+                    var line = parser.ReadFields();
+                    if (line == null) continue;
+
+                    registrationModel.HandleLine(line);
                 }
             }
-
-            return registrations;
         }
 
-        private static List<Registration> UsingStreamReader(string file)
+        // ReSharper disable once UnusedMember.Local
+        private static void UsingStreamReader(string file, RegistrationModel registrationModel)
         {
-            var registrations = new List<Registration>();
-
             using (var reader = new StreamReader(file))
             {
                 reader.ReadLine();
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    var fields = line.Split(',');
-                    var startNumber = fields[0].Trim('"');
-                    var name = fields[1].Trim('"');
-                    var club = fields[2].Trim('"');
-                    var nationality = fields[3].Trim('"');
-                    var @group = fields[4].Trim('"');
-                    var @class = fields[5].Trim('"');
-                    registrations.Add(new Registration(startNumber, name, club, nationality, @group, @class));
+                    registrationModel.HandleLine(line);
                 }
             }
-
-            return registrations;
-
         }
     }
 }
