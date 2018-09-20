@@ -1,5 +1,10 @@
 language: csharp
+install:
+    - nuget restore FlaskeOppgaver.sln
+    - nuget restore TilfeldigFirkant.sln
+    - nuget restore TreRadOO.sln
+    - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
-    - xbuild /p:Configuration=Release FlaskeOppgaver/FlaskeOppgaver.sln
-    - xbuild /p:Configuration=Release TilfeldigFirkant/TilfeldigFirkant.sln
-    - xbuild /p:Configuration=Release TreRadOO/TreRadOO.sln
+    - msbuild /p:Configuration=Release FlaskeOppgaver/FlaskeOppgaver.sln
+    - msbuild /p:Configuration=Release TilfeldigFirkant/TilfeldigFirkant.sln
+    - msbuild /p:Configuration=Release TreRadOO/TreRadOO.sln
