@@ -20,7 +20,6 @@ namespace StartList
 
         public void Dispose()
         {
-            StreamWriter.Flush();
             StreamWriter.Close();
         }
     }
