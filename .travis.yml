@@ -3,11 +3,11 @@ install:
     - nuget restore FlaskeOppgaver/FlaskeOppgaver.sln
     - nuget restore TilfeldigFirkant/TilfeldigFirkant.sln
     - nuget restore TreRadOO/TreRadOO.sln
-    - nuget install NUnit.Runners -Version 3.10.1 -OutputDirectory testrunner
+    - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 script:
     - msbuild /p:Configuration=Release FlaskeOppgaver/FlaskeOppgaver.sln
     - msbuild /p:Configuration=Release TilfeldigFirkant/TilfeldigFirkant.sln
     - msbuild /p:Configuration=Release TreRadOO/TreRadOO.sln
-    - mono ./testrunner/NUnit.Runners.3.10.1/tools/nunit-console.exe ./FlaskeOppgaver/FlaskeTest/bin/Release/FlaskeTest.dll
-    - mono ./testrunner/NUnit.Runners.3.10.1/tools/nunit-console.exe ./TilfeldigFirkant/TilfeldigFirkantTest/bin/Release/TilfeldigFirkantTest.dll
-    - mono ./testrunner/NUnit.Runners.3.10.1/tools/nunit-console.exe ./TreRadOO/TreRadTest/bin/Release/TreRadTest.dll
+    - mono ./testrunner/NUnit.Console.3.9.0/tools/nunit-console.exe ./FlaskeOppgaver/FlaskeTest/bin/Release/FlaskeTest.dll
+    - mono ./testrunner/NUnit.Console.3.9.0/tools/nunit-console.exe ./TilfeldigFirkant/TilfeldigFirkantTest/bin/Release/TilfeldigFirkantTest.dll
+    - mono ./testrunner/NUnit.Console.3.9.0/tools/nunit-console.exe ./TreRadOO/TreRadTest/bin/Release/TreRadTest
