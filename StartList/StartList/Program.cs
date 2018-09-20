@@ -6,7 +6,7 @@ namespace StartList
 {
     class Program
     {
-        static void Main()
+        private static void Main()
         {
             const string inFile = "startlist.csv";
             const string outFile = "startList.txt";
