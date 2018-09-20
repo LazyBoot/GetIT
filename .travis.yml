@@ -8,3 +8,6 @@ script:
     - msbuild /p:Configuration=Release FlaskeOppgaver/FlaskeOppgaver.sln
     - msbuild /p:Configuration=Release TilfeldigFirkant/TilfeldigFirkant.sln
     - msbuild /p:Configuration=Release TreRadOO/TreRadOO.sln
+    - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./FlaskeOppgaver/FlaskeTest/bin/Release/FlaskeTest.dll
+    - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./TilfeldigFirkant/TilfeldigFirkantTest/bin/Release/TilfeldigFirkantTest.dll
+    - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./TreRadOO/TreRadTest/bin/Release/TreRadTest.dll
