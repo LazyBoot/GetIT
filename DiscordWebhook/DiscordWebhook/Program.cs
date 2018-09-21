@@ -32,8 +32,7 @@ namespace DiscordWebhook
 
             _client.Log += Log;
 
-            var token = File.ReadAllText(".token");
-            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.LoginAsync(TokenType.Bot, _tokens.BotToken);
             await _client.StartAsync();
 
             _client.MessageReceived += MessageReceived;
