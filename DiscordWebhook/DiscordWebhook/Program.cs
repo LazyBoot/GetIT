@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Webhook;
 using Discord.WebSocket;
 using Newtonsoft.Json;
 
@@ -15,9 +16,16 @@ namespace DiscordWebhook
     {
         public static HttpClient Client = new HttpClient();
         private readonly DiscordSocketClient _client = new DiscordSocketClient();
+        private static Tokens _tokens;
 
         public static void Main(string[] args)
-            => new Program().MainAsync().GetAwaiter().GetResult();
+        {
+            _tokens = JsonConvert.DeserializeObject<Tokens>(File.ReadAllText(".token"));
+            //=> new Program().MainAsync().GetAwaiter().GetResult();
+
+            var client = new DiscordWebhookClient(_tokens.WebHookId, _tokens.WebHookToken);
+            client.SendMessageAsync("Test", username: "testing");
+        }
 
         public async Task MainAsync()
         {
@@ -59,8 +67,8 @@ namespace DiscordWebhook
 
         private static void TestMessage()
         {
-            const string url =
-                "https://discordapp.com/api/webhooks/492809767903952916/-LzH0wIvOxF24wCupueT463U3F7c_lXkjhEuXuauhjMDjz1yi-lEkJxA_JqnBWBGF7ok";
+            var url =
+                $"https://discordapp.com/api/webhooks/{_tokens.WebHookId}/{_tokens.WebHookToken}";
 
             var webHookJson = new WebhookJson();
             webHookJson.content = "test content";
