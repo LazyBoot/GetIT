@@ -21,8 +21,8 @@ namespace TreRadOO
         {
             var content = bm.Cells[cell].GetContent();
 
-            if (content == CellOwner.Cross) return 'x';
-            if (content == CellOwner.Circle) return 'o';
+            if (content == CellOwner.Player1) return 'x';
+            if (content == CellOwner.Player2) return 'o';
             return ' ';
 
         }

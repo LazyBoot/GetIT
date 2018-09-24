@@ -27,9 +27,9 @@ namespace TreRadTest
 
         private void TestCells(BoardModel bm, int cell1, int cell2, int cell3)
         {
-            bm.Cells[cell1].SetSymbol(CellOwner.Cross);
-            bm.Cells[cell2].SetSymbol(CellOwner.Cross);
-            bm.Cells[cell3].SetSymbol(CellOwner.Cross);
+            bm.Cells[cell1].SetSymbol(CellOwner.Player1);
+            bm.Cells[cell2].SetSymbol(CellOwner.Player1);
+            bm.Cells[cell3].SetSymbol(CellOwner.Player1);
 
             Game.CheckWin(bm);
             Assert.AreEqual("Du", Game.Winner);

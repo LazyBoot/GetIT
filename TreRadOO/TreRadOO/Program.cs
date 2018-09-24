@@ -13,12 +13,12 @@ namespace TreRadOO
                 BoardView.Show(boardModel);
                 Console.Write("Skriv inn hvor du vil sette kryss (f.eks. \"a2\"): ");
                 var position = Console.ReadLine();
-                if (!boardModel.SetCross(position)) continue;
+                if (!boardModel.SetPlayer1(position)) continue;
 
                 if (CheckWinner(boardModel)) break;
 
-                Thread.Sleep(200);
-                boardModel.SetRandomCircle();
+                Thread.Sleep(1000);
+                boardModel.SetRandomPlayer2();
 
                 if (CheckWinner(boardModel)) break;
             }

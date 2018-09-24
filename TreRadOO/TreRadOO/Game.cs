@@ -25,7 +25,7 @@
 
             if (cell0 == CellOwner.None || cell1 != cell0 || cell2 != cell0) return false;
 
-            Winner = cell0 == CellOwner.Cross ? "Du" : "Datamaskinen";
+            Winner = cell0 == CellOwner.Player1 ? "Du" : "Datamaskinen";
             return true;
         }
     }

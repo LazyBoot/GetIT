@@ -13,11 +13,11 @@ namespace TreRadTest
         {
             var bm = new BoardModel();
 
-            bm.SetCross("a1");
-            bm.SetCircle("b1");
+            bm.SetPlayer1("a1");
+            bm.SetPlayer2("b1");
 
-            Assert.AreEqual(CellOwner.Cross, bm.GetSymbol(0));
-            Assert.AreEqual(CellOwner.Circle, bm.GetSymbol(1));
+            Assert.AreEqual(CellOwner.Player1, bm.GetSymbol(0));
+            Assert.AreEqual(CellOwner.Player2, bm.GetSymbol(1));
 
         }
 
@@ -26,11 +26,11 @@ namespace TreRadTest
         {
             var bm = new BoardModel();
 
-            bm.SetCross("a1");
+            bm.SetPlayer1("a1");
 
-            Assert.IsFalse(bm.SetCross("a1"));
+            Assert.IsFalse(bm.SetPlayer1("a1"));
 
-            Assert.IsFalse(bm.SetCross("a4"));
+            Assert.IsFalse(bm.SetPlayer1("a4"));
 
         }
 
@@ -39,9 +39,9 @@ namespace TreRadTest
         {
             var bm = new BoardModel();
 
-            bm.SetRandomCircle();
+            bm.SetRandomPlayer2();
 
-            var hasCircle = bm.Cells.Any(c => c.GetContent() == CellOwner.Circle);
+            var hasCircle = bm.Cells.Any(c => c.GetContent() == CellOwner.Player2);
 
             Assert.IsTrue(hasCircle);
         }

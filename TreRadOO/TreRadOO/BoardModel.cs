@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace TreRadOO
@@ -64,26 +66,35 @@ namespace TreRadOO
             return Cells[cell].SetSymbol(symbol);
         }
 
-        public bool SetCross(string position)
+        public bool SetPlayer1(string position)
         {
-            return SetSymbol(position, CellOwner.Cross);
+            return SetSymbol(position, CellOwner.Player1);
         }
 
-        public bool SetCircle(string position)
+        public bool SetPlayer2(string position)
         {
-            return SetSymbol(position, CellOwner.Circle);
+            return SetSymbol(position, CellOwner.Player2);
         }
 
-        public void SetRandomCircle()
+        public void SetRandomPlayer2()
         {
-            int randomCell;
-            do
+            var freeCells = new List<int>();
+            foreach (var cell in Cells.Where(c => c.GetContent() == CellOwner.None).ToArray())
             {
-                randomCell = _rnd.Next(0, 9);
-                Thread.Sleep(10);
-            } while (GetSymbol(randomCell) != CellOwner.None);
+                freeCells.Add(Array.IndexOf(Cells, cell));
+            }
 
-            SetSymbol(randomCell, CellOwner.Circle);
+            if (freeCells.Count == 0) return;
+            var randomCell = freeCells[_rnd.Next(0, freeCells.Count)];
+
+            //int randomCell;
+            //do
+            //{
+            //    randomCell = _rnd.Next(0, 9);
+            //    Thread.Sleep(10);
+            //} while (GetSymbol(randomCell) != CellOwner.None);
+
+            SetSymbol(randomCell, CellOwner.Player2);
         }
     }
 }

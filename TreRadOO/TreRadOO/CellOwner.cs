@@ -3,7 +3,7 @@
     public enum CellOwner
     {
         None,
-        Cross,
-        Circle
+        Player1,
+        Player2
     }
 }
