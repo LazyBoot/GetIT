@@ -45,5 +45,27 @@ namespace TreRadTest
 
             Assert.IsTrue(hasCircle);
         }
+
+        [TestMethod]
+        public void TestRandomFullBoard()
+        {
+            var bm = new BoardModel();
+
+            bm.SetPlayer1("a1");
+            bm.SetPlayer1("a2");
+            bm.SetPlayer1("a3");
+            bm.SetPlayer1("b1");
+            bm.SetPlayer1("b2");
+            bm.SetPlayer1("b3");
+            bm.SetPlayer1("c1");
+            bm.SetPlayer1("c2");
+            bm.SetPlayer1("c3");
+
+            bm.SetRandomPlayer2();
+
+            var hasCircle = bm.Cells.Any(c => c.GetContent() == CellOwner.Player2);
+            Assert.IsFalse(hasCircle);
+
+        }
     }
 }
