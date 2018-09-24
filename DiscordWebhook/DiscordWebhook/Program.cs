@@ -21,10 +21,10 @@ namespace DiscordWebhook
         public static void Main(string[] args)
         {
             _tokens = JsonConvert.DeserializeObject<Tokens>(File.ReadAllText(".token"));
-            //=> new Program().MainAsync().GetAwaiter().GetResult();
 
-            var client = new DiscordWebhookClient(_tokens.WebHookId, _tokens.WebHookToken);
-            client.SendMessageAsync("Test", username: "testing");
+            //new Program().MainAsync().GetAwaiter().GetResult();
+
+            TestMessage();
         }
 
         public async Task MainAsync()
@@ -48,13 +48,13 @@ namespace DiscordWebhook
             await _client.LogoutAsync();
         }
 
-        private Task Log(LogMessage msg)
+        private static Task Log(LogMessage msg)
         {
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
 
-        private async Task MessageReceived(SocketMessage message)
+        private static async Task MessageReceived(SocketMessage message)
         {
             switch (message.Content)
             {
@@ -69,8 +69,9 @@ namespace DiscordWebhook
             var url =
                 $"https://discordapp.com/api/webhooks/{_tokens.WebHookId}/{_tokens.WebHookToken}";
 
-            var webHookJson = new WebhookJson();
+            var webHookJson = new DiscordMessage();
             webHookJson.content = "test content";
+            webHookJson.username = "test content";
 
             var content = new StringContent(JsonConvert.SerializeObject(webHookJson), Encoding.UTF8, "application/json");
             var result = Client.PostAsync(url, content);

@@ -1,8 +1,10 @@
 ﻿// ReSharper disable InconsistentNaming
 namespace DiscordWebhook
 {
-    public class WebhookJson
+    public class DiscordMessage
     {
         public string content;
+        public string username;
+        public string avatar_url;
     }
 }
