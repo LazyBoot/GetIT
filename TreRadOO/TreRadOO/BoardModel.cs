@@ -78,14 +78,12 @@ namespace TreRadOO
 
         public void SetRandomPlayer2()
         {
-            var freeCells = new List<int>();
-            foreach (var cell in Cells.Where(c => c.GetContent() == CellOwner.None).ToArray())
-            {
-                freeCells.Add(Array.IndexOf(Cells, cell));
-            }
+            var freeCells = Cells.Select((cells,i) => new { i, cells})
+                .Where(cell => cell.cells.GetContent() == CellOwner.None)
+                .Select(t=> t.i).ToArray();
 
-            if (freeCells.Count == 0) return;
-            var randomCell = freeCells[_rnd.Next(0, freeCells.Count)];
+            if (freeCells.Length == 0) return;
+            var randomCell = freeCells[_rnd.Next(0, freeCells.Length)];
 
             //int randomCell;
             //do
