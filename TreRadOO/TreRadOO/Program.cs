@@ -17,7 +17,7 @@ namespace TreRadOO
 
                 if (CheckWinner(boardModel)) break;
 
-                Thread.Sleep(2000);
+                Thread.Sleep(200);
                 boardModel.SetRandomCircle();
 
                 if (CheckWinner(boardModel)) break;

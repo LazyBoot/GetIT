@@ -16,8 +16,8 @@ namespace TreRadTest
             bm.SetCross("a1");
             bm.SetCircle("b1");
 
-            Assert.AreEqual('x', bm.Cells[0].GetSymbol());
-            Assert.AreEqual('o', bm.Cells[1].GetSymbol());
+            Assert.AreEqual(CellOwner.Cross, bm.GetSymbol(0));
+            Assert.AreEqual(CellOwner.Circle, bm.GetSymbol(1));
 
         }
 
@@ -41,7 +41,7 @@ namespace TreRadTest
 
             bm.SetRandomCircle();
 
-            var hasCircle = bm.Cells.Any(c => c.GetSymbol() == 'o');
+            var hasCircle = bm.Cells.Any(c => c.GetContent() == CellOwner.Circle);
 
             Assert.IsTrue(hasCircle);
         }

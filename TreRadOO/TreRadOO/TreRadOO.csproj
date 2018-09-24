@@ -46,6 +46,7 @@
     <Compile Include="BoardModel.cs" />
     <Compile Include="BoardView.cs" />
     <Compile Include="Cell.cs" />
+    <Compile Include="CellOwner.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

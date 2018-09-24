@@ -27,16 +27,16 @@ namespace TreRadTest
 
         private void TestCells(BoardModel bm, int cell1, int cell2, int cell3)
         {
-            bm.Cells[cell1].SetSymbol('x');
-            bm.Cells[cell2].SetSymbol('x');
-            bm.Cells[cell3].SetSymbol('x');
+            bm.Cells[cell1].SetSymbol(CellOwner.Cross);
+            bm.Cells[cell2].SetSymbol(CellOwner.Cross);
+            bm.Cells[cell3].SetSymbol(CellOwner.Cross);
 
             Game.CheckWin(bm);
             Assert.AreEqual("Du", Game.Winner);
 
-            bm.Cells[cell1].SetSymbol(' ');
-            bm.Cells[cell2].SetSymbol(' ');
-            bm.Cells[cell3].SetSymbol(' ');
+            bm.Cells[cell1].SetSymbol(CellOwner.None);
+            bm.Cells[cell2].SetSymbol(CellOwner.None);
+            bm.Cells[cell3].SetSymbol(CellOwner.None);
         }
 
     }

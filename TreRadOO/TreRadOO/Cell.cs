@@ -8,24 +8,24 @@ namespace TreRadOO
 {
     public class Cell
     {
-        private char _symbol;
+        private CellOwner _content;
 
         public Cell()
         {
-            _symbol = ' ';
+            _content = CellOwner.None;
         }
 
-        public bool SetSymbol(char symbol)
+        public bool SetSymbol(CellOwner symbol)
         {
-            if (_symbol != ' ') return false;
+            if (_content != CellOwner.None) return false;
 
-            _symbol = symbol;
+            _content = symbol;
             return true;
         }
 
-        public char GetSymbol()
+        public CellOwner GetContent()
         {
-            return _symbol;
+            return _content;
         }
     }
 }

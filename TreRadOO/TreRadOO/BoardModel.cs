@@ -17,40 +17,47 @@ namespace TreRadOO
             }
         }
 
-        private bool SetChar(string position, char symbol)
+        public CellOwner GetSymbol(int cell)
         {
+            return Cells[cell].GetContent();
+        }
+
+        private bool SetSymbol(string position, CellOwner symbol)
+        {
+            var col = char.ToLower(position[0]) - 'a';
             var row = Convert.ToInt32(position[1].ToString()) - 1;
-            var col = (int)char.ToLower(position[0]) - 'a';
 
             var cell = col + row * 3;
 
             if (cell >= Cells.Length)
                 cell = -1;
 
-            //var cell = -1;
-            //if (row == "1")
-            //{
-            //    if (col == "a") cell = 0;
-            //    else if (col == "b") cell = 1;
-            //    else if (col == "c") cell = 2;
-            //}
-            //else if (row == "2")
-            //{
-            //    if (col == "a") cell = 3;
-            //    else if (col == "b") cell = 4;
-            //    else if (col == "c") cell = 5;
-            //}
-            //else if (row == "3")
-            //{
-            //    if (col == "a") cell = 6;
-            //    else if (col == "b") cell = 7;
-            //    else if (col == "c") cell = 8;
-            //}
+            /**
+            * var cell = -1;
+            * if (row == "1")
+            * {
+            *     if (col == "a") cell = 0;
+            *     else if (col == "b") cell = 1;
+            *     else if (col == "c") cell = 2;
+            * }
+            * else if (row == "2")
+            * {
+            *     if (col == "a") cell = 3;
+            *     else if (col == "b") cell = 4;
+            *     else if (col == "c") cell = 5;
+            * }
+            * else if (row == "3")
+            * {
+            *     if (col == "a") cell = 6;
+            *     else if (col == "b") cell = 7;
+            *     else if (col == "c") cell = 8;
+            * }
+            */
 
-            return SetChar(cell, symbol);
+            return SetSymbol(cell, symbol);
         }
 
-        private bool SetChar(int cell, char symbol)
+        private bool SetSymbol(int cell, CellOwner symbol)
         {
             if (cell == -1) return false;
 
@@ -59,14 +66,13 @@ namespace TreRadOO
 
         public bool SetCross(string position)
         {
-            return SetChar(position, 'x');
+            return SetSymbol(position, CellOwner.Cross);
         }
 
         public bool SetCircle(string position)
         {
-            return SetChar(position, 'o');
+            return SetSymbol(position, CellOwner.Circle);
         }
-
 
         public void SetRandomCircle()
         {
@@ -75,9 +81,9 @@ namespace TreRadOO
             {
                 randomCell = _rnd.Next(0, 9);
                 Thread.Sleep(10);
-            } while (Cells[randomCell].GetSymbol() != ' ');
+            } while (GetSymbol(randomCell) != CellOwner.None);
 
-            SetChar(randomCell, 'o');
+            SetSymbol(randomCell, CellOwner.Circle);
         }
     }
 }

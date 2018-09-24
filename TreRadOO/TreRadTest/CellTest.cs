@@ -11,11 +11,11 @@ namespace TreRadTest
         public void TestSetSymbol()
         {
             var cell = new Cell();
-            cell.SetSymbol('x');
-            Assert.AreEqual('x', cell.GetSymbol());
+            cell.SetSymbol(CellOwner.Cross);
+            Assert.AreEqual(CellOwner.Cross, cell.GetContent());
 
-            cell.SetSymbol('o');
-            Assert.AreNotEqual('o', cell.GetSymbol());
+            cell.SetSymbol(CellOwner.Circle);
+            Assert.AreNotEqual(CellOwner.Circle, cell.GetContent());
         }
     }
 }
