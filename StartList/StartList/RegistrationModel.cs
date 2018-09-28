@@ -19,17 +19,19 @@ namespace StartList
         {
             var registration = new Registration(line);
 
-            if (!string.IsNullOrEmpty(registration.Club))
+            if (string.IsNullOrEmpty(registration.Club))
             {
-                var club = Clubs.FirstOrDefault(c => string.Equals(c.Name, registration.Club, StringComparison.CurrentCultureIgnoreCase));
-                if (club == null)
-                {
-                    club = new Club(registration.Club);
-                    Clubs.Add(club);
-                }
-
-                club.Registrations.Add(registration);
+                registration.Club = "no club";
             }
+
+            var club = Clubs.FirstOrDefault(c => string.Equals(c.Name, registration.Club, StringComparison.CurrentCultureIgnoreCase));
+            if (club == null)
+            {
+                club = new Club(registration.Club);
+                Clubs.Add(club);
+            }
+
+            club.AddRegistration(registration);
 
             Registrations.Add(registration);
         }

@@ -5,7 +5,7 @@ namespace StartList
     public class Club
     {
         public string Name { get; }
-        public List<Registration> Registrations = new List<Registration>();
+        public List<Registration> Registrations { get; } = new List<Registration>();
 
         public Club(string name)
         {

@@ -14,9 +14,15 @@ namespace StartList
             var registrationModel = new RegistrationModel();
             UsingParser(inFile, registrationModel);
 
-            using (var output = new Output(new StreamWriter(outFile, false)))
+            using (var output = new Output(new StreamWriter(outFile)))
             {
-                foreach (var club in registrationModel.Clubs.OrderByDescending(c => c.Registrations.Count).ThenBy(c => c.Name))
+                //var clubs = registrationModel.Clubs.OrderByDescending(c => c.Registrations.Count).ThenBy(c => c.Name);
+                var clubs =
+                    from club in registrationModel.Clubs
+                    orderby club.Registrations.Count descending, club.Name
+                    select club;
+
+                foreach (var club in clubs)
                 {
                     output.WriteLine(club.Name);
                     output.WriteLine("-------------------------");
