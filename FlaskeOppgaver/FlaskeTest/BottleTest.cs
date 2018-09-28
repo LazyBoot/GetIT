@@ -55,10 +55,10 @@ namespace FlaskeTest
             var bottle = new Bottle(10);
             var bottle2 = new Bottle(5);
 
-            bottle.FillFromTap();
-            bottle2.FillToTop(bottle);
+            bottle2.FillFromTap();
+            bottle.FillToTop(bottle2);
 
-            Assert.AreEqual(5, bottle2.Content);
+            Assert.AreEqual(0, bottle2.Content);
             Assert.AreEqual(5, bottle.Content);
         }
     }

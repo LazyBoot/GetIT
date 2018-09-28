@@ -1,4 +1,6 @@
-﻿namespace FlaskeOppgaver
+﻿using System;
+
+namespace FlaskeOppgaver
 {
     public class Bottle
     {
@@ -17,20 +19,22 @@
 
         public void Fill(int amount)
         {
-            if (Content + amount <= Capacity)
-            {
-                Content += amount;
-            }
+                Content = Math.Min(Content + amount, Capacity);
         }
 
         public void FillToTop(Bottle bottle)
         {
             var spaceLeft = Capacity - Content;
-            if (spaceLeft > 0 && spaceLeft < bottle.Content)
-            {
-                Content = Capacity;
-                bottle.Content -= spaceLeft;
-            }
+            var toFill = Math.Min(spaceLeft, bottle.Content);
+
+            Content += toFill;
+            bottle.Content -= toFill;
+
+            //if (spaceLeft > 0 && spaceLeft <= bottle.Content)
+            //{
+            //    Content = Capacity;
+            //    bottle.Content -= spaceLeft;
+            //}
         }
 
         public int Empty()

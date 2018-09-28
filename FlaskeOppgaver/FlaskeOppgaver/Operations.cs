@@ -20,13 +20,11 @@ namespace FlaskeOppgaver
 
         private static void CheckIfSolvedAndExit(Bottle bottle1, Bottle bottle2, int wantedVolume, int[] operations)
         {
-            if (bottle1.Content == wantedVolume || bottle2.Content == wantedVolume)
-            {
-                Console.WriteLine();
-                Console.WriteLine($"Fant riktig volum ({wantedVolume}) med {operations.Length} operasjoner:");
-                ShowOperations(operations);
-                Environment.Exit(0);
-            }
+            if (bottle1.Content != wantedVolume && bottle2.Content != wantedVolume && bottle1.Content + bottle2.Content != wantedVolume) return;
+            Console.WriteLine();
+            Console.WriteLine($"Fant riktig volum ({wantedVolume}) med {operations.Length} operasjoner:");
+            ShowOperations(operations);
+            Environment.Exit(0);
         }
 
         private static void ShowOperations(int[] operations)
