@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OppgaveAbax
+﻿namespace OppgaveAbax
 {
     public class Vehicle
     {
@@ -22,7 +16,7 @@ namespace OppgaveAbax
 
         public override string ToString()
         {
-            return $"RegNumber: {RegNumber}. Motorkraft: {EnginePower} kw.";
+            return $"{GetType().Name}: RegNumber: {RegNumber}. Motorkraft: {EnginePower} kw.";
         }
     }
 }
