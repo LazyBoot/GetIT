@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OppgaveAbax
 {
@@ -18,6 +14,16 @@ namespace OppgaveAbax
             WingSpan = wingSpan;
             Capacity = capacity;
             TotalWeight = totalWeight;
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} Vingespenn: {WingSpan}m. lasteevne: {Capacity} tonn. Egenvekt: {TotalWeight} tonn";
+        }
+
+        public void Move()
+        {
+            Console.WriteLine($"Fly ({RegNumber}) bedt om å fly.");
         }
     }
 }

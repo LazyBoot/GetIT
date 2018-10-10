@@ -10,6 +10,7 @@ namespace OppgaveAbax
     {
         public string RegNumber;
         public int EnginePower;
+        public string TopSpeedUnit = "km/h";
         public VehicleType Type;
 
         public Vehicle(string regNumber, int enginePower, VehicleType type)
@@ -17,6 +18,11 @@ namespace OppgaveAbax
             RegNumber = regNumber;
             EnginePower = enginePower;
             Type = type;
+        }
+
+        public override string ToString()
+        {
+            return $"RegNumber: {RegNumber}. Motorkraft: {EnginePower} kw.";
         }
     }
 }
