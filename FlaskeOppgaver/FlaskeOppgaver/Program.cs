@@ -2,9 +2,9 @@
 
 namespace FlaskeOppgaver
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var bottle1Size = 5;
             var bottle2Size = 3;
@@ -27,9 +27,8 @@ namespace FlaskeOppgaver
             var bottle2 = new Bottle(bottle2Size);
 
             var numberOfOperations = 1;
-            while (true)
+            while (!Operations.TryWithGivenNumberOfOperations(numberOfOperations, bottle1, bottle2, wantedVolume))
             {
-                Operations.TryWithGivenNumberOfOperations(numberOfOperations, bottle1, bottle2, wantedVolume);
                 numberOfOperations++;
             }
 

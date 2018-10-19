@@ -2,9 +2,9 @@
 
 namespace FlaskeOppgaver
 {
-    class Operations
+    public class Operations
     {
-        public static void TryWithGivenNumberOfOperations(int numberOfOperations, Bottle bottle1, Bottle bottle2, int wantedVolume)
+        public static bool TryWithGivenNumberOfOperations(int numberOfOperations, Bottle bottle1, Bottle bottle2, int wantedVolume)
         {
             Console.WriteLine("Prøver med " + numberOfOperations + " operasjon(er).");
             var operations = new int[numberOfOperations];
@@ -12,19 +12,20 @@ namespace FlaskeOppgaver
             while (true)
             {
                 DoOperations(operations, bottle1, bottle2);
-                CheckIfSolvedAndExit(bottle1, bottle2, wantedVolume, operations);
+                if (CheckIfSolvedAndExit(bottle1, bottle2, wantedVolume, operations)) return true;
                 var success = UpdateOperations(operations);
                 if (!success) break;
             }
+            return false;
         }
 
-        private static void CheckIfSolvedAndExit(Bottle bottle1, Bottle bottle2, int wantedVolume, int[] operations)
+        private static bool CheckIfSolvedAndExit(Bottle bottle1, Bottle bottle2, int wantedVolume, int[] operations)
         {
-            if (bottle1.Content != wantedVolume && bottle2.Content != wantedVolume && bottle1.Content + bottle2.Content != wantedVolume) return;
+            if (bottle1.Content != wantedVolume && bottle2.Content != wantedVolume && bottle1.Content + bottle2.Content != wantedVolume) return false;
             Console.WriteLine();
             Console.WriteLine($"Fant riktig volum ({wantedVolume}) med {operations.Length} operasjoner:");
             ShowOperations(operations);
-            Environment.Exit(0);
+            return true;
         }
 
         private static void ShowOperations(int[] operations)
