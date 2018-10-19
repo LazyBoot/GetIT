@@ -7,8 +7,6 @@ namespace LazyLibrary
 {
     public class CalculateAllTheThings
     {
-        private static readonly HttpClient Client = new HttpClient();
-
         private static readonly string _appid = System.Text.Encoding.UTF8.GetString(Resource.appid);
 
         public static string Calculate(string input)

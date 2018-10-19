@@ -10,9 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var calculate = LazyLibrary.CalculateAllTheThings.Calculate("2+2");
+            var calculate = LazyLibrary.CalculateAllTheThings.Calculate("50km/h in miles per minute");
             Console.WriteLine(calculate);
-            Console.ReadKey();
         }
     }
 }
