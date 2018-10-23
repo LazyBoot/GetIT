@@ -18,20 +18,24 @@ namespace TreRadTest
 
             Assert.AreEqual(CellOwner.Player1, bm.GetSymbol(0));
             Assert.AreEqual(CellOwner.Player2, bm.GetSymbol(1));
-
         }
 
         [TestMethod]
-        public void TestSetCharFail()
+        public void TestSetCharOccupiedCell()
         {
             var bm = new BoardModel();
 
             bm.SetPlayer1("a1");
 
             Assert.IsFalse(bm.SetPlayer1("a1"));
+        }
+
+        [TestMethod]
+        public void TestSetCharInvalidCell()
+        {
+            var bm = new BoardModel();
 
             Assert.IsFalse(bm.SetPlayer1("a4"));
-
         }
 
         [TestMethod]
