@@ -15,8 +15,8 @@ namespace OppgaveArv
 
         protected Shape(Random random)
         {
-            DirectionX = random.Next(0, 2);
-            DirectionY = random.Next(0, 2);
+            DirectionX = random.Next(-1, 2);
+            DirectionY = random.Next(-1, 2);
         }
 
         public abstract string GetCharacter(int row, int col);
