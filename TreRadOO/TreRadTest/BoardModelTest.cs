@@ -1,14 +1,13 @@
-﻿using System;
+﻿using NUnit.Framework;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TreRadOO;
 
 namespace TreRadTest
 {
-    [TestClass]
+	[TestFixture]
     public class BoardModelTest
     {
-        [TestMethod]
+        [Test]
         public void TestSetChar()
         {
             var bm = new BoardModel();
@@ -20,7 +19,7 @@ namespace TreRadTest
             Assert.AreEqual(CellOwner.Player2, bm.GetSymbol(1));
         }
 
-        [TestMethod]
+        [Test]
         public void TestSetCharOccupiedCell()
         {
             var bm = new BoardModel();
@@ -30,7 +29,7 @@ namespace TreRadTest
             Assert.IsFalse(bm.SetPlayer1("a1"));
         }
 
-        [TestMethod]
+        [Test]
         public void TestSetCharInvalidCell()
         {
             var bm = new BoardModel();
@@ -38,7 +37,7 @@ namespace TreRadTest
             Assert.IsFalse(bm.SetPlayer1("a4"));
         }
 
-        [TestMethod]
+        [Test]
         public void TestRandomCircle()
         {
             var bm = new BoardModel();
@@ -50,7 +49,7 @@ namespace TreRadTest
             Assert.IsTrue(hasCircle);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRandomFullBoard()
         {
             var bm = new BoardModel();

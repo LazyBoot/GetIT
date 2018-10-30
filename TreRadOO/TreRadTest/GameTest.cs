@@ -1,78 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using TreRadOO;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TreRadTest
 {
-    [TestClass]
+    [TestFixture]
     public class GameTest
     {
-        [TestMethod]
-        public void TestWinner()
+		[TestCaseSource(typeof(GameTestData), nameof(GameTestData.TestWinnerData))]
+        public void TestWinner(int cell0, int cell1, int cell2)
         {
-            var bm = GetTestBoard(0, 1, 2);
+            var bm = GetTestBoard(cell0, cell1, cell2);
             Assert.IsTrue(Game.CheckWin(bm));
             Assert.AreEqual("Du", Game.Winner);
         }
 
-        [TestMethod]
-        public void TestWinner2()
-        {
-            var bm = GetTestBoard(3, 4, 5);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner3()
-        {
-            var bm = GetTestBoard(6, 7, 8);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner4()
-        {
-            var bm = GetTestBoard(0, 3, 6);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner5()
-        {
-            var bm = GetTestBoard(1, 4, 7);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner6()
-        {
-            var bm = GetTestBoard(2, 5, 8);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner7()
-        {
-            var bm = GetTestBoard(0, 4, 8);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
-        public void TestWinner8()
-        {
-            var bm = GetTestBoard(2, 4, 6);
-            Assert.IsTrue(Game.CheckWin(bm));
-            Assert.AreEqual("Du", Game.Winner);
-        }
-
-        [TestMethod]
+        [Test]
         public void TestNoWinner()
         {
             var bm = new BoardModel();
@@ -90,4 +37,22 @@ namespace TreRadTest
         }
 
     }
+
+	public class GameTestData
+	{
+		public static IEnumerable<TestCaseData> TestWinnerData
+		{
+			get
+			{
+				yield return new TestCaseData(0,1,2);
+				yield return new TestCaseData(3,4,5);
+				yield return new TestCaseData(6,7,8);
+				yield return new TestCaseData(0,3,6);
+				yield return new TestCaseData(1,4,7);
+				yield return new TestCaseData(2,5,8);
+				yield return new TestCaseData(0,4,8);
+				yield return new TestCaseData(2,4,6);
+			}
+		}
+	}
 }

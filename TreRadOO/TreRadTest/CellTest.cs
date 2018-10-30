@@ -1,13 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using TreRadOO;
 
 namespace TreRadTest
 {
-    [TestClass]
+	[TestFixture()]
     public class CellTest
     {
-        [TestMethod]
+        [Test]
         public void TestSetSymbol()
         {
             var cell = new Cell();
