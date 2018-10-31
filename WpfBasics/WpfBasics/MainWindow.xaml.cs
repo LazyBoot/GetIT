@@ -48,10 +48,23 @@ namespace WpfBasics
 
         private void CheckBox_OnUnchecked(object sender, RoutedEventArgs e)
         {
-            //var content = ((CheckBox)sender).Content.ToString();
-            //var index = LengthText.Text.IndexOf(content, StringComparison.Ordinal);
-            //LengthText.Text = LengthText.Text.Remove(index, content.Length);
             LengthText.Text = LengthText.Text.Replace(((CheckBox)sender).Content.ToString(), string.Empty);
+        }
+
+        private void FinishDropdown_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (NoteText == null)
+                return;
+
+            var comboBox = (ComboBox) sender;
+            var value = (ComboBoxItem)comboBox.SelectedValue;
+
+            NoteText.Text = (string)value.Content;
+        }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            FinishDropdown_OnSelectionChanged(FinishDropdown, null);
         }
     }
 }
