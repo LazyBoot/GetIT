@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreRadOO", "TreRadOO\TreRad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreRadTest", "TreRadTest\TreRadTest.csproj", "{294C629C-E511-4751-A86B-3ECF66D957E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreRadTestXUnit", "TreRadTestXUnit\TreRadTestXUnit.csproj", "{A7A22B06-01D3-40F3-9582-7AB08337F261}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{294C629C-E511-4751-A86B-3ECF66D957E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{294C629C-E511-4751-A86B-3ECF66D957E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{294C629C-E511-4751-A86B-3ECF66D957E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A22B06-01D3-40F3-9582-7AB08337F261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A22B06-01D3-40F3-9582-7AB08337F261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A22B06-01D3-40F3-9582-7AB08337F261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A22B06-01D3-40F3-9582-7AB08337F261}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
