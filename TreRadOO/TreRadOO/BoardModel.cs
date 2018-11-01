@@ -24,7 +24,7 @@ namespace TreRadOO
             return Cells[cell].GetContent();
         }
 
-        private bool SetSymbol(string position, CellOwner symbol)
+	    private bool SetSymbol(string position, CellOwner symbol)
         {
             var col = char.ToLower(position[0]) - 'a';
             var row = Convert.ToInt32(position[1].ToString()) - 1;
@@ -59,7 +59,7 @@ namespace TreRadOO
             return SetSymbol(cell, symbol);
         }
 
-        private bool SetSymbol(int cell, CellOwner symbol)
+	    public bool SetSymbol(int cell, CellOwner symbol)
         {
             if (cell == -1) return false;
 

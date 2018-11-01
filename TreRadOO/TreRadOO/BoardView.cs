@@ -4,10 +4,10 @@ namespace TreRadOO
 {
     public class BoardView
     {
+	    public static readonly char[] PlayerSymbols = {' ', 'x', 'o'};
+
         public static void Show(BoardModel bm)
         {
-            Console.Clear();
-
             Console.WriteLine(
                 "  a b c" + Environment.NewLine +
                 " ┌─────┐" + Environment.NewLine +
@@ -17,13 +17,13 @@ namespace TreRadOO
                 " └─────┘");
         }
 
-        private static char GetSymbol(BoardModel bm, int cell)
+	    public static char GetSymbol(BoardModel bm, int cell)
         {
             var content = bm.Cells[cell].GetContent();
 
-            if (content == CellOwner.Player1) return 'x';
-            if (content == CellOwner.Player2) return 'o';
-            return ' ';
+            if (content == CellOwner.Player1) return PlayerSymbols[(int)CellOwner.Player1];
+            if (content == CellOwner.Player2) return PlayerSymbols[(int)CellOwner.Player2];
+            return PlayerSymbols[(int)CellOwner.None];
 
         }
     }

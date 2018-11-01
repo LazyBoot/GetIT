@@ -6,6 +6,7 @@
 
         public static bool CheckWin(BoardModel bm)
         {
+	        Winner = null;
             return CheckCells(bm, 0, 1, 2)
                    || CheckCells(bm, 3, 4, 5)
                    || CheckCells(bm, 6, 7, 8)

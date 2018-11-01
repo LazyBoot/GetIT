@@ -10,6 +10,7 @@ namespace TreRadOO
             var boardModel = new BoardModel();
             while (true)
             {
+				Console.Clear();
                 BoardView.Show(boardModel);
                 Console.Write("Skriv inn hvor du vil sette kryss (f.eks. \"a2\"): ");
                 var position = Console.ReadLine();
@@ -28,6 +29,7 @@ namespace TreRadOO
         {
             if (!Game.CheckWin(boardModel)) return false;
 
+			Console.Clear();
             BoardView.Show(boardModel);
             Console.WriteLine();
             Console.WriteLine($"{Game.Winner} vant!");
