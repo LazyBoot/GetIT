@@ -1,14 +1,11 @@
-﻿using System;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NUnit.Framework;
 using TreRadOO;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace TreRadTest
 {
-    [TestFixture]
+	[TestFixture]
     public class GameTest
     {
 		[TestCaseSource(typeof(GameTestData), nameof(GameTestData.TestWinnerData))]
@@ -17,6 +14,7 @@ namespace TreRadTest
             var bm = GetTestBoard(cell0, cell1, cell2);
             Assert.IsTrue(Game.CheckWin(bm));
             Assert.AreEqual("Du", Game.Winner);
+	        Game.Winner = null;
         }
 
         [Test]
@@ -25,9 +23,10 @@ namespace TreRadTest
             var bm = new BoardModel();
             Assert.IsFalse(Game.CheckWin(bm));
             Assert.AreEqual(null, Game.Winner);
+	        Game.Winner = null;
         }
 
-        private static BoardModel GetTestBoard(int cell1, int cell2, int cell3)
+	    private static BoardModel GetTestBoard(int cell1, int cell2, int cell3)
         {
             var bm = new BoardModel();
             bm.Cells[cell1].SetSymbol(CellOwner.Player1);
