@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TreRadOO;
-using TreRadTestXUnit.TestData;
+﻿using TreRadOO;
 using Xunit;
 
 namespace TreRadTestXUnit
