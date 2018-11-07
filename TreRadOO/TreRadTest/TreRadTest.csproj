@@ -56,6 +56,7 @@
     <Compile Include="BoardModelTest.cs" />
     <Compile Include="CellTest.cs" />
     <Compile Include="GameTest.cs" />
+    <Compile Include="TestData\GameTestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
