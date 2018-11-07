@@ -7,7 +7,7 @@ namespace TreRadTestXUnit
 	{
 
 		[Theory]
-		[ClassData(typeof(GameTestData))]
+		[MemberData(nameof(GameTestData.Data), MemberType = typeof(GameTestData))]
 		public void TestWinner(int cell0, int cell1, int cell2, CellOwner winner)
 		{
 			string winText = null;
